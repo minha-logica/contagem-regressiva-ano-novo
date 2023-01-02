@@ -1,7 +1,14 @@
 import time 
 from datetime import datetime, timedelta
 
-
+def exibir_msg(mensagem):
+    print()
+    msg = ""
+    for l in mensagem:
+        msg += l
+        print("\r{}".format(msg),end='',flush=True)
+        time.sleep(0.1)
+        
 def converter_para_HMS(segundos):
     horas,     resto = divmod(segundos,60*60)
     minutos,   resto = divmod(resto, 60)
@@ -37,7 +44,8 @@ while True:
     if dias_restantes == 0 and segundos_restantes == 0:    
         ano_novo = datetime.today().year
         if ano_novo == ano_velho + 1:
-            print(f"\nFeliz Ano Novo!\nFeliz {ano_novo}!")
+            exibir_msg("Feliz Ano Novo 🎆")
+            exibir_msg(f"Tenha um ótimo {ano_novo}!")
         break 
         
     time.sleep(1)
